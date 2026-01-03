@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/
+*.pot
+
+# Migrations (optional: keep if you want them in repo)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+# Uncomment next line if you want to ignore migration files entirely
+# */migrations/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage / testing
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+
+# Node (if using frontend in same repo)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build / packaging
+dist/
+build/
+*.bak
+*.tmp
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# PyCharm project settings
+*.iml
