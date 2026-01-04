@@ -1,13 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, phone, password=None, **extra_fields):
         if not email:
             raise ValueError("Users must have an email address")
         email = self.normalize_email(email)
         user = self.model(email=email, username=username, phone=phone, **extra_fields)
-        user.set_password(password)
+        user.set_password(password)  # hashes the password
         user.save(using=self._db)
         return user
 
@@ -15,6 +19,7 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, username, phone, password, **extra_fields)
+
 
 class UsersData(AbstractBaseUser, PermissionsMixin):
     Roles = (
@@ -26,7 +31,7 @@ class UsersData(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    phone = models.IntegerField()
+    phone = models.BigIntegerField()
     role = models.CharField(max_length=20, choices=Roles, default='customer')
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)

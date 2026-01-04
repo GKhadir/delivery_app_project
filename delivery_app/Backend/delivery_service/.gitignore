@@ -26,6 +26,7 @@ static/
 # Migrations (optional: keep if you want them in repo)
 */migrations/__pycache__/
 */migrations/*.pyc
+*/migrations/
 # Uncomment next line if you want to ignore migration files entirely
 # */migrations/
 
