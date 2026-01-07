@@ -26,11 +26,16 @@ class CreateOrder(APIView):
         except UsersData.DoesNotExist:
             return Response("user not found",status=status.HTTP_404_NOT_FOUND)
         
-# class addOrderItem(APIView):
-#     def post(self,request):
-#         try:
-#             data=request.data
-
-#         except
-#             return Response("product not found",status=status.HTTP_404_NOT_FOUND)
+class addOrderItem(APIView):
+    def post(self,request):
+        try:
+            data=request.data
+            serializer=OrderItemSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data,status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        except Exception:
+            return Response("product not found",status=status.HTTP_404_NOT_FOUND)
 
